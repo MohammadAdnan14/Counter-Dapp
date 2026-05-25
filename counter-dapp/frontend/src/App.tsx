@@ -195,15 +195,15 @@ function WalletConnector({
     <details className="wallet-item">
       <summary>
         <span>{wallet.id}</span>
-        <button
-          type="button"
-          onClick={(event) => {
-            event.preventDefault();
-            void wallet.connect();
-          }}
-        >
-          {isConnected ? 'Refresh' : 'Connect'}
-        </button>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.preventDefault();
+              if (!isConnected) void wallet.connect();
+            }}
+          >
+            {isConnected ? 'Connected' : 'Connect'}
+          </button>
         <ChevronDown aria-hidden="true" />
       </summary>
       {wallet.accounts?.length ? (
